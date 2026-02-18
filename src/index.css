@@ -1,0 +1,168 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Warm off-white base */
+  --background: oklch(0.975 0.005 80);
+  --foreground: oklch(0.18 0.02 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 260);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 260);
+
+  /* Indigo-teal brand accent — refined, not generic blue */
+  --primary: oklch(0.48 0.18 255);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-glow: oklch(0.62 0.15 255);
+
+  --secondary: oklch(0.95 0.01 255);
+  --secondary-foreground: oklch(0.48 0.18 255);
+
+  --muted: oklch(0.96 0.005 80);
+  --muted-foreground: oklch(0.52 0.02 260);
+
+  --accent: oklch(0.94 0.03 255);
+  --accent-foreground: oklch(0.35 0.15 255);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.91 0.01 255);
+  --input: oklch(0.93 0.01 255);
+  --ring: oklch(0.48 0.18 255);
+
+  /* Charts */
+  --chart-1: oklch(0.48 0.18 255);
+  --chart-2: oklch(0.62 0.15 175);
+  --chart-3: oklch(0.72 0.18 65);
+  --chart-4: oklch(0.65 0.20 310);
+  --chart-5: oklch(0.60 0.22 20);
+
+  /* Sidebar — deep navy */
+  --sidebar: oklch(0.20 0.05 260);
+  --sidebar-foreground: oklch(0.95 0.01 255);
+  --sidebar-primary: oklch(0.62 0.15 255);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.28 0.05 260);
+  --sidebar-accent-foreground: oklch(0.95 0.01 255);
+  --sidebar-border: oklch(0.30 0.05 260);
+  --sidebar-ring: oklch(0.62 0.15 255);
+
+  /* Custom design tokens */
+  --gradient-hero: linear-gradient(135deg, oklch(0.48 0.18 255), oklch(0.55 0.20 225));
+  --gradient-card-kurs: linear-gradient(135deg, oklch(0.48 0.18 255 / 0.12), oklch(0.55 0.20 225 / 0.06));
+  --gradient-card-teilnehmer: linear-gradient(135deg, oklch(0.62 0.15 175 / 0.12), oklch(0.65 0.12 175 / 0.06));
+  --gradient-card-dozent: linear-gradient(135deg, oklch(0.72 0.18 65 / 0.15), oklch(0.75 0.15 65 / 0.06));
+  --gradient-card-anmeldung: linear-gradient(135deg, oklch(0.65 0.20 310 / 0.12), oklch(0.68 0.18 310 / 0.06));
+  --gradient-card-raum: linear-gradient(135deg, oklch(0.60 0.22 20 / 0.12), oklch(0.65 0.18 20 / 0.06));
+
+  --shadow-elegant: 0 4px 20px -4px oklch(0.48 0.18 255 / 0.15);
+  --shadow-card: 0 1px 4px oklch(0.18 0.02 260 / 0.06), 0 4px 16px oklch(0.18 0.02 260 / 0.04);
+  --shadow-hero: 0 20px 60px -10px oklch(0.48 0.18 255 / 0.4);
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Hero gradient banner */
+.hero-banner {
+  background: var(--gradient-hero);
+  box-shadow: var(--shadow-hero);
+}
+
+/* KPI stat cards with colored gradients */
+.stat-card-kurs { background: var(--gradient-card-kurs); }
+.stat-card-teilnehmer { background: var(--gradient-card-teilnehmer); }
+.stat-card-dozent { background: var(--gradient-card-dozent); }
+.stat-card-anmeldung { background: var(--gradient-card-anmeldung); }
+.stat-card-raum { background: var(--gradient-card-raum); }
+
+/* Icon orb styles */
+.icon-orb-blue {
+  background: oklch(0.48 0.18 255 / 0.15);
+  color: oklch(0.48 0.18 255);
+}
+.icon-orb-teal {
+  background: oklch(0.62 0.15 175 / 0.15);
+  color: oklch(0.55 0.15 175);
+}
+.icon-orb-amber {
+  background: oklch(0.72 0.18 65 / 0.18);
+  color: oklch(0.60 0.20 65);
+}
+.icon-orb-purple {
+  background: oklch(0.65 0.20 310 / 0.15);
+  color: oklch(0.55 0.20 310);
+}
+.icon-orb-red {
+  background: oklch(0.60 0.22 20 / 0.15);
+  color: oklch(0.55 0.22 20);
+}
+
+/* Badge variants */
+.badge-paid {
+  background: oklch(0.62 0.15 175 / 0.15);
+  color: oklch(0.40 0.12 175);
+  border: 1px solid oklch(0.62 0.15 175 / 0.3);
+}
+.badge-unpaid {
+  background: oklch(0.72 0.18 65 / 0.15);
+  color: oklch(0.50 0.18 65);
+  border: 1px solid oklch(0.72 0.18 65 / 0.3);
+}
